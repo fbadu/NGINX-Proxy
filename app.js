@@ -29,7 +29,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 /* Endpoint */
-app.get('/welco', (req, res) => {
+app.get('/welcome', (req, res) => {
   conn.query("SHOW VARIABLES LIKE 'server_id'", function (err, results) {
     if (err) {
       res.json(err)
@@ -42,13 +42,6 @@ app.get('/welco', (req, res) => {
       res.json(result)
     }
   });
-})
-
-app.get('/user', (req, res) => {
-  conn.query('SELECT * FROM user ', (err, result) => {
-    if (err) console.log(err)
-    res.json(result)
-  })
 })
 
 module.exports = app
