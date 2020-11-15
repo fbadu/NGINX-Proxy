@@ -3,7 +3,7 @@
 
 This project using docker image you can pull 
 ```
-docker push ayiangio/node-docker:latest
+docker pull ayiangio/node-docker:latest
 ```
 
 This source code reference from this [repository](https://github.com/tatasfachrul/express-boilerplate)
