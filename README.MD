@@ -6,6 +6,6 @@ This project using docker image you can pull
 docker push ayiangio/node-docker:latest
 ```
 
-This source reference from this [repository](https://github.com/tatasfachrul/express-boilerplate)
+This source code reference from this [repository](https://github.com/tatasfachrul/express-boilerplate)
 
 Thanks to [Tatas Fachrul](https://github.com/tatasfachrul)
