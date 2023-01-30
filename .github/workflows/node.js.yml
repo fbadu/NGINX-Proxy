@@ -5,7 +5,8 @@ name: Node.js CI
 
 on:
   push:
-    tags: release*
+    #tags: release*
+    push: master
   
 jobs:
   build:
@@ -18,8 +19,7 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 14.x
-    - run: npm isntall
-    - run: npm start
+    - run: npm isntall 
 
     - name: Build & push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
