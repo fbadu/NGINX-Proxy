@@ -20,3 +20,13 @@ jobs:
         node-version: 14.x
     - run: npm isntall
     - run: npm start
+
+    - name: Build & push Docker image
+      uses: mr-smithers-excellent/docker-build-push@v5
+      with:
+        image: fdlynt/nodejs-cicd-docker
+        tags: latest
+        registry: docker.io
+        dockerfile: Dockerfile 
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
