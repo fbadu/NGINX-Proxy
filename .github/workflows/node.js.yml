@@ -6,7 +6,7 @@ name: Node.js CI
 on:
   push:
     #tags: release*
-    tags: master
+    push: master
   
 jobs:
   build:
@@ -25,7 +25,7 @@ jobs:
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
         image: fdlynt/nodejs-cicd-docker
-        tags: ${{ SHORT_SHA }}
+        tags: ${{ steps.commit.short_sha }}
         registry: docker.io
         dockerfile: Dockerfile 
         username: ${{ secrets.DOCKER_USERNAME }}
