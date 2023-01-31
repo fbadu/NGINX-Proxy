@@ -25,7 +25,7 @@ jobs:
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
         image: fdlynt/nodejs-cicd-docker
-        tags: ${{ steps.commit.short_sha }}
+        tags: ${{ commit.short_sha }}
         registry: docker.io
         dockerfile: Dockerfile 
         username: ${{ secrets.DOCKER_USERNAME }}
