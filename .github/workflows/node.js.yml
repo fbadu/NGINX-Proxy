@@ -1,5 +1,3 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
 name: Node.js CI
 
@@ -25,7 +23,7 @@ jobs:
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
         image: fdlynt/nodejs-cicd-docker
-        tags: ${{ commit.short_sha }}
+        tags: ${{ steps.commit.short }}
         registry: docker.io
         dockerfile: Dockerfile 
         username: ${{ secrets.DOCKER_USERNAME }}
