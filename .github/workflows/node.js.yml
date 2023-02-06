@@ -1,10 +1,11 @@
-
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 name: Node.js CI
 
 on:
   push:
     #tags: release*
-    push: master
+    branches: ['master']
   
 jobs:
   build:
@@ -28,4 +29,14 @@ jobs:
         dockerfile: Dockerfile 
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        
+
+    - name: Deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.PRIVATE_KEY }}
+        port: 22
+        script: |
+          cd /home/ubuntu/app/automasi-CI-CD
+          git pull origin master
