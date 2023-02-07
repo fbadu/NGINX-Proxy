@@ -23,7 +23,7 @@ jobs:
     - name: Build & push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
-        image: fdlynt/nodejs-cicd-docker
+        image: nodejs-cicd-docker
         tags: ${{ steps.commit.short }}
         registry: docker.io
         dockerfile: Dockerfile 
@@ -41,7 +41,7 @@ jobs:
           cd /home/fdlynt
           docker rm -f node-cicd
           docker images -q | xargs docker rmi 
-          docker pull fdlynt/nodejs-cicd-docker:${{ steps.commit.short }}
-          docker run -t -d -p 8082:8080 --name node-cicd fdlynt/nodejs-cicd-docker:${{ steps.commit.short }}
+          docker pull fdlynt/nodejs-cicd-docker:master${{ steps.commit.short }}
+          docker run -t -d -p 8082:8080 --name node-cicd fdlynt/nodejs-cicd-docker:master${{ steps.commit.short }}
           
 
