@@ -5,6 +5,7 @@ name: Node.js CI
 on:
   push:
     #tags: release*
+    #tags: release*
     branches: ['master']
   
 jobs:
@@ -40,4 +41,5 @@ jobs:
         script: |
           cd /home/fdlynt
           docker rm -f node-cicd
-          docker images -q | xargs docker rmi 
+          docker images -q | xargs docker rmi
+
