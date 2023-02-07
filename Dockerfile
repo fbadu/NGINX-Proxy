@@ -1,5 +1,5 @@
 FROM node:18.13.0
-ENV NAME=production
+ENV NAME=sooke
 # ENV PORT=8081
 
 WORKDIR /app
