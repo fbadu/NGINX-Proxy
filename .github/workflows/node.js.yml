@@ -5,7 +5,6 @@ name: Node.js CI
 on:
   push:
     #tags: release*
-    #tags: release*
     branches: ['master']
   
 jobs:
@@ -30,3 +29,17 @@ jobs:
         dockerfile: Dockerfile 
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.PRIVATE_KEY }}
+        port: 22
+        script: |
+          cd /home/fdlynt
+          docker rm -f node-cicd
+          docker images -q | xargs docker rmi 
+          docker pull fdlynt/nodejs-cicd-docker:master${{ steps.commit.short }}
+          docker run -t -d -p 8082:8080 --name node-cicd fdlynt/nodejs-cicd-docker:master${{ steps.commit.short }}
