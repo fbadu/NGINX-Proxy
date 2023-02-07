@@ -38,5 +38,10 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         port: 22
         script: |
-          cd /home/ubuntu/app/automasi-CI-CD
-          git pull origin master
+          cd /home/fdlynt
+          docker rm -f node-cicd
+          docker images -q | xargs docker rmi 
+          docker pull fdlynt/nodejs-cicd-docker:${{ steps.commit.short }}
+          docker run -t -d -p 8082:8080 --name node-cicd fdlynt/nodejs-cicd-docker:${{ steps.commit.short }}
+          
+
