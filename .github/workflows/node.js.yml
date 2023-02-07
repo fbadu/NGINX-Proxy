@@ -5,6 +5,7 @@ name: Node.js CI
 on:
   push:
     #tags: release*
+    #tags: release*
     branches: ['master']
   
 jobs:
