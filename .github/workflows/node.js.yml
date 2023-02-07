@@ -41,7 +41,3 @@ jobs:
           cd /home/fdlynt
           docker rm -f node-cicd
           docker images -q | xargs docker rmi 
-          docker pull fdlynt/nodejs-cicd-docker:master${{ steps.commit.short }}
-          docker run -t -d -p 8082:8080 --name node-cicd fdlynt/nodejs-cicd-docker:master${{ steps.commit.short }}
-          
-
